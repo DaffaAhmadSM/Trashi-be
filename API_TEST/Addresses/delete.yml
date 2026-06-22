@@ -1,0 +1,22 @@
+info:
+  name: Delete Address
+  type: http
+  seq: 9
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/addresses/{{address_id}}"
+  auth: bearer
+  bearer:
+    token: "{{token}}"
+  headers:
+    - name: Accept
+      value: application/json
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete an address by ID. Requires authentication.

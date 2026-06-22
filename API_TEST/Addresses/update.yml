@@ -1,0 +1,31 @@
+info:
+  name: Update Address
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/addresses/{{address_id}}"
+  auth: bearer
+  bearer:
+    token: "{{token}}"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: label
+        type: text
+        value: ""
+      - name: city
+        type: text
+        value: ""
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update an existing address. Requires authentication.

@@ -1,0 +1,27 @@
+info:
+  name: Logout
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/api/auth/logout"
+  headers:
+    - name: Accept
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+runtime:
+  variables:
+    - name: base_url
+      value: 127.0.0.1:8000
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Logout and revoke the current access token. Requires authentication.

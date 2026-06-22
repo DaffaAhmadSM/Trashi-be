@@ -1,0 +1,38 @@
+info:
+  name: Register
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/auth/register"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: admin
+        contentType: string
+      - name: email
+        type: text
+        value: admin@test.com
+        contentType: string
+      - name: password
+        type: text
+        value: admin321
+        contentType: string
+      - name: password_confirmation
+        type: text
+        value: admin321
+        contentType: string
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Register a new user. Returns user data and an API token.
