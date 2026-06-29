@@ -16,6 +16,13 @@ http:
         type: text
         value: admin321
 
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        body=res.getBody()
+        bru.setEnvVar("Bearer", body.token)
+
 settings:
   encodeUrl: true
   timeout: 0

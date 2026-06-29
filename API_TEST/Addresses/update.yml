@@ -6,21 +6,20 @@ info:
 http:
   method: PUT
   url: "{{base_url}}/api/addresses/{{address_id}}"
-  auth: bearer
-  bearer:
-    token: "{{token}}"
   headers:
     - name: Accept
       value: application/json
   body:
-    type: multipart-form
-    data:
-      - name: label
-        type: text
-        value: ""
-      - name: city
-        type: text
-        value: ""
+    type: json
+    data: ""
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+runtime:
+  variables:
+    - name: address_id
+      value: "1"
 
 settings:
   encodeUrl: true

@@ -1,0 +1,38 @@
+info:
+  name: Update Profile
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/auth/update"
+  headers:
+    - name: Accept
+      value: application/json
+      disabled: true
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: admin1
+        contentType: string
+      - name: email
+        type: text
+        value: aaa@email.com
+        contentType: string
+      - name: profile_image
+        type: file
+        value: []
+        disabled: true
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update authenticated user profile. All fields optional. profile_image accepts jpg, jpeg, png, webp (max 2MB).

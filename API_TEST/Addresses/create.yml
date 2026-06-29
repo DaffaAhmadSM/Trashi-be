@@ -6,12 +6,7 @@ info:
 http:
   method: POST
   url: "{{base_url}}/api/addresses"
-  auth: bearer
-  bearer:
-    token: "{{token}}"
   headers:
-    - name: Content-Type
-      value: application/json
     - name: Accept
       value: application/json
   body:
@@ -19,19 +14,18 @@ http:
     data:
       - name: label
         type: text
-        value: ""
+        value: Rumah
       - name: city
         type: text
-        value: ""
+        value: citi
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
 
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-
-vars:
-  res:
-    address_id: res.body.address_id
 
 docs: Create a new address for the authenticated user. Returns the created address.

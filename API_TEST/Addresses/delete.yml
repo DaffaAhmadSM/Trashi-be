@@ -6,12 +6,17 @@ info:
 http:
   method: DELETE
   url: "{{base_url}}/api/addresses/{{address_id}}"
-  auth: bearer
-  bearer:
-    token: "{{token}}"
   headers:
     - name: Accept
       value: application/json
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+runtime:
+  variables:
+    - name: address_id
+      value: "1"
 
 settings:
   encodeUrl: true
