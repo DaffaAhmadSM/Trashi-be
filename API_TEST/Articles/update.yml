@@ -1,0 +1,40 @@
+info:
+  name: Update Article
+  type: http
+  seq: 13
+
+http:
+  method: POST
+  url: "{{base_url}}/api/articles/{{article_uuid}}"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: ""
+        disabled: true
+      - name: content
+        type: text
+        value: ""
+        disabled: true
+      - name: is_published
+        type: text
+        value: "true"
+        contentType: bool
+      - name: full_image
+        type: file
+        value: []
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update an existing article. Replaces old image if new one uploaded. Admin only.

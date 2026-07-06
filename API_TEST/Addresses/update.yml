@@ -4,7 +4,7 @@ info:
   seq: 8
 
 http:
-  method: PUT
+  method: POST
   url: "{{base_url}}/api/addresses/{{address_id}}"
   headers:
     - name: Accept

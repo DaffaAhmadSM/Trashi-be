@@ -1,0 +1,44 @@
+info:
+  name: Create Article
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{base_url}}/api/articles"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: test article 1
+      - name: content
+        type: text
+        value: test article adiashasinanjdkhhcbadhfgqhi
+      - name: is_published
+        type: text
+        value: "true"
+        contentType: boolean
+      - name: full_image
+        type: file
+        value:
+          - /Users/macbookair/Downloads/IMG_6678.jpg
+        contentType: image/jpeg
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+vars:
+  res:
+    article_uuid: res.body.uuid
+
+docs: Create a new article with image. Image auto-converted to webp, thumbnail generated at 20% resolution. Admin only.

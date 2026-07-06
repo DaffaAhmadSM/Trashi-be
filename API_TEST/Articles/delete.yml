@@ -1,0 +1,22 @@
+info:
+  name: Delete Article
+  type: http
+  seq: 14
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/articles/{{article_uuid}}"
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+  headers:
+    - name: Accept
+      value: application/json
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete an article by UUID. Admin only.

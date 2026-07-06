@@ -4,3 +4,5 @@ variables:
     value: http://127.0.0.1:8000
   - name: Bearer
     value: Yh56KlYvgggB2V4Va6txzojPIMh2YyvbdYclVl7B9b3a0038
+  - name: article_uuid
+    value: a2313e81-1ad4-4cc5-aaee-5a4e014c9181
