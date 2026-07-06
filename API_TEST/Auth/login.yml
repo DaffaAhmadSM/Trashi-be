@@ -14,7 +14,7 @@ http:
         value: admin@test.com
       - name: password
         type: text
-        value: admin321
+        value: inipasswordadmin
 
 runtime:
   scripts:

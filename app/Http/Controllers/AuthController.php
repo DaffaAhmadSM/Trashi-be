@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class AuthController extends Controller
 
         $user = User::create([
             ...$validator->validated(),
+            'role_id' => Role::where('name', 'user')->value('id'),
             'profile_image' => 'https://ui-avatars.com/api/?name='.urlencode($request->name).'&background=random&size=256',
         ]);
 
@@ -86,6 +88,8 @@ class AuthController extends Controller
         $user = $request->user();
         $data = $validator->validated();
 
+        unset($data['role_id']);
+
         if ($request->hasFile('profile_image')) {
             if ($user->profile_image && ! str_starts_with($user->profile_image, 'https://')) {
                 Storage::delete($user->profile_image);
@@ -94,10 +98,6 @@ class AuthController extends Controller
             $filename = Str::uuid().'.'.$request->file('profile_image')->extension();
             $data['profile_image'] = $request->file('profile_image')->storeAs('profile-images', $filename, 'public');
         }
-
-        return response()->json([
-            $data
-        ]);
 
         $user->update($data);
 

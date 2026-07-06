@@ -4,7 +4,7 @@ info:
   seq: 5
 
 http:
-  method: PUT
+  method: POST
   url: "{{base_url}}/api/auth/update"
   headers:
     - name: Accept
@@ -19,7 +19,7 @@ http:
         contentType: string
       - name: email
         type: text
-        value: aaa@email.com
+        value: admin@email.com
         contentType: string
       - name: profile_image
         type: file

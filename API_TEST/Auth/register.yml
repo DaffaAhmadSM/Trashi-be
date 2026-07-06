@@ -14,19 +14,19 @@ http:
     data:
       - name: name
         type: text
-        value: admin
+        value: user
         contentType: string
       - name: email
         type: text
-        value: admin@test.com
+        value: user@test.com
         contentType: string
       - name: password
         type: text
-        value: admin321
+        value: user12345
         contentType: string
       - name: password_confirmation
         type: text
-        value: admin321
+        value: user12345
         contentType: string
 
 settings:
