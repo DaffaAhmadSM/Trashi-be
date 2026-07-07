@@ -11,6 +11,14 @@ http:
     data:
       - name: email
         type: text
+        value: user@test.com
+        disabled: true
+      - name: password
+        type: text
+        value: inipasswordtest
+        disabled: true
+      - name: email
+        type: text
         value: admin@test.com
       - name: password
         type: text
