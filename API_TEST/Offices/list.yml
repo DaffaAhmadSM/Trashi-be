@@ -1,0 +1,19 @@
+info:
+  name: List Offices
+  type: http
+  seq: 15
+
+http:
+  method: GET
+  url: "{{base_url}}/api/offices"
+  headers:
+    - name: Accept
+      value: application/json
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List all offices. Public access.

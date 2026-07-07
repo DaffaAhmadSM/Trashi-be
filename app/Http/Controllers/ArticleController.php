@@ -134,8 +134,8 @@ class ArticleController extends Controller
         imagewebp($sourceImage, $fullPath, 80);
 
         // Thumbnail: 20% resolution
-        $thumbWidth = max(1, (int) ($origWidth * 0.2));
-        $thumbHeight = max(1, (int) ($origHeight * 0.2));
+        $thumbWidth = max(1, (int) ($origWidth * 0.3));
+        $thumbHeight = max(1, (int) ($origHeight * 0.3));
         $thumbImage = imagescale($sourceImage, $thumbWidth, $thumbHeight);
 
         $thumbName = 'articles/'.Str::random(8).'_'.time().'.webp';

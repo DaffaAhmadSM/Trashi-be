@@ -3,6 +3,7 @@
 use App\Http\Controllers\address\AddressController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OfficeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,12 @@ Route::middleware('auth:sanctum')->group(function (): void {
 
 Route::get('articles', [ArticleController::class, 'index']);
 Route::get('articles/{article}', [ArticleController::class, 'show']);
+
+Route::get('offices', [OfficeController::class, 'index']);
+Route::get('offices/{office}', [OfficeController::class, 'show']);
+
+Route::middleware(['auth:sanctum', 'admin'])->group(function (): void {
+    Route::post('offices', [OfficeController::class, 'store']);
+    Route::post('offices/{office}', [OfficeController::class, 'update']);
+    Route::delete('offices/{office}', [OfficeController::class, 'destroy']);
+});

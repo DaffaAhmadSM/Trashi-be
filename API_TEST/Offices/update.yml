@@ -1,0 +1,42 @@
+info:
+  name: Update Office
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{base_url}}/api/offices/{{office_id}}"
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: office_name
+        type: text
+        value: ""
+      - name: office_address
+        type: text
+        value: ""
+      - name: office_phone
+        type: text
+        value: ""
+      - name: address_latitude
+        type: text
+        value: "0"
+      - name: address_longitude
+        type: text
+        value: "0"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update an existing office. Admin only.

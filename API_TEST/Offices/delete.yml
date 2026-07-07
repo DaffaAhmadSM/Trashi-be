@@ -1,0 +1,22 @@
+info:
+  name: Delete Office
+  type: http
+  seq: 19
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/offices/{{office_id}}"
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+  headers:
+    - name: Accept
+      value: application/json
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete an office by ID. Admin only.

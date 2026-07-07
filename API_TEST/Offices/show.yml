@@ -1,0 +1,19 @@
+info:
+  name: Show Office
+  type: http
+  seq: 16
+
+http:
+  method: GET
+  url: "{{base_url}}/api/offices/{{office_id}}"
+  headers:
+    - name: Accept
+      value: application/json
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get a single office by ID. Public access.
