@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Enums\TimeSlot;
+use App\Enums\TransactionStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['user_id', 'address_id', 'date', 'total_paid'])]
+#[Fillable(['user_id', 'address_id', 'date', 'total_paid', 'status', 'scheduled_date', 'time_slot', 'payment_status', 'payment_proof'])]
 class Transaction extends Model
 {
     protected $primaryKey = 'trans_id';
@@ -20,6 +22,9 @@ class Transaction extends Model
         return [
             'date' => 'datetime',
             'total_paid' => 'decimal:2',
+            'status' => TransactionStatus::class,
+            'scheduled_date' => 'date',
+            'time_slot' => TimeSlot::class,
         ];
     }
 

@@ -1,0 +1,37 @@
+info:
+  name: Create Booking
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{base_url}}/api/booking"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: address_id
+        type: text
+        value: "3"
+      - name: details[0][category_id]
+        type: text
+        value: "1"
+      - name: scheduled_date
+        type: text
+        value: 2026-07-14
+      - name: time_slot
+        type: text
+        value: 8AM-10AM
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a booking. Finds nearest office, calculates distance fee in IDR, creates transaction with schedule and payment pending.

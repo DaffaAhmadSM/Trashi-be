@@ -1,0 +1,25 @@
+info:
+  name: Confirm Booking Payment
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{base_url}}/api/booking/{{trans_id}}/confirm"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data: []
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Confirm payment for a booking. Sets payment_status to confirmed and status to accepted.

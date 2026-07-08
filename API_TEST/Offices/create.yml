@@ -6,12 +6,7 @@ info:
 http:
   method: POST
   url: "{{base_url}}/api/offices"
-  auth:
-    type: bearer
-    token: "{{Bearer}}"
   headers:
-    - name: Content-Type
-      value: application/json
     - name: Accept
       value: application/json
   body:
@@ -19,28 +14,27 @@ http:
     data:
       - name: office_name
         type: text
-        value: ""
+        value: abcd
       - name: office_address
         type: text
-        value: ""
+        value: aaaa
       - name: office_phone
         type: text
-        value: ""
+        value: aaaaa
       - name: address_latitude
         type: text
-        value: "0"
+        value: "-6.2088"
       - name: address_longitude
         type: text
-        value: "0"
+        value: "106.8456"
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
 
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-
-vars:
-  res:
-    office_id: res.body.id
 
 docs: Create a new office. Admin only.

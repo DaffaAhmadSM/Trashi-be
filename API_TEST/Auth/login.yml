@@ -11,18 +11,18 @@ http:
     data:
       - name: email
         type: text
-        value: user@test.com
-        disabled: true
+        value: demo@trashi.test
       - name: password
         type: text
-        value: inipasswordtest
-        disabled: true
+        value: password
       - name: email
         type: text
         value: admin@test.com
+        disabled: true
       - name: password
         type: text
         value: inipasswordadmin
+        disabled: true
 
 runtime:
   scripts:
