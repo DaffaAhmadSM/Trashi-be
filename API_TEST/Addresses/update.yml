@@ -10,8 +10,14 @@ http:
     - name: Accept
       value: application/json
   body:
-    type: json
-    data: ""
+    type: multipart-form
+    data:
+      - name: latitude
+        type: text
+        value: "-6.2088"
+      - name: longitude
+        type: text
+        value: "106.8456"
   auth:
     type: bearer
     token: "{{Bearer}}"

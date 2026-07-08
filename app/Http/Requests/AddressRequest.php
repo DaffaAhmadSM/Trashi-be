@@ -19,6 +19,8 @@ class AddressRequest extends FormRequest
         return [
             'label' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
+            'latitude' => ['required', 'numeric', 'between:-90,90'],
+            'longitude' => ['required', 'numeric', 'between:-180,180'],
         ];
     }
 }

@@ -6,12 +6,12 @@ info:
 http:
   method: GET
   url: "{{base_url}}/api/addresses"
-  auth:
-    type: bearer
-    token: "{{Bearer}}"
   headers:
     - name: Accept
       value: application/json
+  auth:
+    type: bearer
+    token: "{{Bearer}}"
 
 settings:
   encodeUrl: true
