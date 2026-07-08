@@ -14,7 +14,7 @@ http:
     data:
       - name: address_id
         type: text
-        value: "3"
+        value: "1"
       - name: details[0][category_id]
         type: text
         value: "1"

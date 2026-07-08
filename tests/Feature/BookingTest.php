@@ -1,7 +1,6 @@
 <?php
 
 use App\Enums\TimeSlot;
-use App\Enums\TransactionStatus;
 use App\Models\Address;
 use App\Models\Office;
 use App\Models\User;
@@ -184,75 +183,6 @@ test('booking accepts other slots on Saturday', function () {
     ]);
 
     $response->assertCreated();
-});
-
-test('confirm payment sets status to accepted', function () {
-    $user = User::factory()->create();
-    $category = WasteCategory::create(['name_category' => 'Plastik']);
-
-    $address = Address::factory()->for($user)->create([
-        'latitude' => -6.2088,
-        'longitude' => 106.8456,
-    ]);
-
-    Office::create([
-        'office_name' => 'Office Jakarta',
-        'office_address' => 'Jl. Sudirman',
-        'office_phone' => '021-123456',
-        'address_latitude' => -6.2000,
-        'address_longitude' => 106.8400,
-    ]);
-
-    // Create booking
-    $booking = $this->actingAs($user)->postJson('/api/booking', [
-        'address_id' => $address->address_id,
-        'details' => [['category_id' => $category->category_id]],
-        'scheduled_date' => nextValidDate(),
-        'time_slot' => TimeSlot::Slot_8_10->value,
-    ]);
-
-    $transId = $booking->json('transaction.trans_id');
-
-    // Confirm payment
-    $response = $this->actingAs($user)->postJson("/api/booking/{$transId}/confirm");
-
-    $response->assertSuccessful()
-        ->assertJsonPath('message', 'Payment confirmed.')
-        ->assertJsonPath('transaction.payment_status', 'confirmed')
-        ->assertJsonPath('transaction.status', TransactionStatus::Accepted->value);
-});
-
-test('cannot confirm already confirmed payment', function () {
-    $user = User::factory()->create();
-    $category = WasteCategory::create(['name_category' => 'Plastik']);
-
-    $address = Address::factory()->for($user)->create([
-        'latitude' => -6.2088,
-        'longitude' => 106.8456,
-    ]);
-
-    Office::create([
-        'office_name' => 'Office Jakarta',
-        'office_address' => 'Jl. Sudirman',
-        'office_phone' => '021-123456',
-        'address_latitude' => -6.2000,
-        'address_longitude' => 106.8400,
-    ]);
-
-    $booking = $this->actingAs($user)->postJson('/api/booking', [
-        'address_id' => $address->address_id,
-        'details' => [['category_id' => $category->category_id]],
-        'scheduled_date' => nextValidDate(),
-        'time_slot' => TimeSlot::Slot_8_10->value,
-    ]);
-
-    $transId = $booking->json('transaction.trans_id');
-
-    $this->actingAs($user)->postJson("/api/booking/{$transId}/confirm");
-    $response = $this->actingAs($user)->postJson("/api/booking/{$transId}/confirm");
-
-    $response->assertUnprocessable()
-        ->assertJsonFragment(['message' => 'Payment already confirmed.']);
 });
 
 test('booking validates address belongs to user', function () {

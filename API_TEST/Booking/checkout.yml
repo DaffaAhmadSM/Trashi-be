@@ -1,20 +1,24 @@
 info:
-  name: Confirm Booking Payment
+  name: Checkout (Pay)
   type: http
   seq: 11
 
 http:
   method: POST
-  url: "{{base_url}}/api/booking/{{trans_id}}/confirm"
+  url: "{{base_url}}/api/checkout/{{trans_id}}"
   headers:
     - name: Accept
       value: application/json
   body:
     type: multipart-form
-    data: []
   auth:
     type: bearer
     token: "{{Bearer}}"
+
+runtime:
+  variables:
+    - name: trans_id
+      value: "2"
 
 settings:
   encodeUrl: true
@@ -22,4 +26,4 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: Confirm payment for a booking. Sets payment_status to confirmed and status to accepted.
+docs: Process payment for a booking. Currently sets payment_status to "paid" (placeholder for Midtrans integration).

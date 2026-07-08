@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TransactionStatus;
 use App\Http\Requests\BookingRequest;
 use App\Models\Address;
 use App\Models\CheckoutConfig;
@@ -11,7 +10,6 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use DB;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
@@ -87,35 +85,6 @@ class BookingController extends Controller
             ],
             'transaction' => $transaction,
         ], 201);
-    }
-
-    /**
-     * Confirm payment for a booking.
-     */
-    public function confirm(Request $request, Transaction $transaction): JsonResponse
-    {
-        if ($transaction->user_id !== $request->user()->id) {
-            abort(404);
-        }
-
-        if ($transaction->payment_status !== 'pending') {
-            return response()->json([
-                'message' => 'Payment already confirmed.',
-            ], 422);
-        }
-
-        $transaction->update([
-            'payment_status' => 'confirmed',
-            'status' => TransactionStatus::Accepted,
-        ]);
-
-        return response()->json([
-            'message' => 'Payment confirmed.',
-            'transaction' => $transaction->load([
-                'transactionDetails.wasteCategory',
-                'paymentFees',
-            ]),
-        ]);
     }
 
     /**

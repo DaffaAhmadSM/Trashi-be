@@ -20,10 +20,10 @@ http:
         value: citi
       - name: latitude
         type: text
-        value: "-6.2088"
+        value: "-78"
       - name: longitude
         type: text
-        value: "106.8456"
+        value: "67"
   auth:
     type: bearer
     token: "{{Bearer}}"
