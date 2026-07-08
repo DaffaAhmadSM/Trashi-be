@@ -1,7 +1,7 @@
 name: local
 variables:
   - name: base_url
-    value: http://127.0.0.1:8000
+    value: http://127.0.0.1:8001
   - name: Bearer
     value: Yh56KlYvgggB2V4Va6txzojPIMh2YyvbdYclVl7B9b3a0038
   - name: article_uuid
