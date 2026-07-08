@@ -1,0 +1,38 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: trashi-be
+    restart: unless-stopped
+    command: ["php", "artisan", "octane:start", "--host=0.0.0.0", "--port=8080"]
+    working_dir: /app
+    ports:
+      - "8001:8080"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    networks:
+      - trashi-network
+
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    ports:
+      - "5432"
+    shm_size: 512mb
+    environment:
+      POSTGRES_DB: trahsi_be
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - psdata:/var/lib/postgresql/data
+    networks:
+      - trashi-network
+
+volumes:
+  psdata:
+networks:
+  trashi-network:
+    driver: bridge
