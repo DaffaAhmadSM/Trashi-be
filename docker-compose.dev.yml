@@ -9,8 +9,13 @@ services:
     working_dir: /app
     ports:
       - "8001:8080"
-    env_file:
-      - .env
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: trahsi_be
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres321
     volumes:
       - .:/app
     networks:

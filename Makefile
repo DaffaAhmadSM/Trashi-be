@@ -23,6 +23,9 @@ compose:
 	@echo "Running database migrations..."
 	docker compose exec app php artisan migrate --seed
 
+	@echo "linking storage..."
+	docker compose exec app php artisan storage:link
+
 	@echo "Checking container status..."
 	docker compose ps
 

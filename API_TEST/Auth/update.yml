@@ -23,8 +23,8 @@ http:
         contentType: string
       - name: profile_image
         type: file
-        value: []
-        disabled: true
+        value:
+          - /home/dapra/Downloads/onyee.png
   auth:
     type: bearer
     token: "{{Bearer}}"

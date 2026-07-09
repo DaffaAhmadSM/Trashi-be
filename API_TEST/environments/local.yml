@@ -1,10 +1,10 @@
 name: local
 variables:
   - name: base_url
-    value: http://127.0.0.1:8001
-  - name: Bearer
-    value: Yh56KlYvgggB2V4Va6txzojPIMh2YyvbdYclVl7B9b3a0038
+    value: http://localhost:8000
   - name: article_uuid
     value: ""
   - name: office_id
     value: "1"
+  - name: Bearer
+    value: 1|GI21EfDgojlN3ymi77hE68Q1QQFgEgv1zj48iXx2dab724c8
